@@ -1,1 +1,1 @@
-It is a Take Notes Website made using django framework, postgresql database, bootstrap, html and css.Basically its a website where you can store notes,to-do list,any kind of information which user wants to store.
+It is a Take Notes Website made using django framework, postgresql database, bootstrap, html and css.Basically its a website where you can store notes,make to-do list,any kind of information which user wants to store.
