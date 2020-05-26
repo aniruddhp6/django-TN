@@ -1,0 +1,127 @@
+{% extends 'base.html' %} {% block title %} | User Dashboard {% endblock %}
+<!-- space -->
+{% block content %}
+<section id="showcase-inner" style="background: #474b4f; color: #86c232;">
+  <div class="container">
+    <div class="row text-center py-4">
+      <div class="col-md-12">
+        <h1 class="display-4">User Dashboard</h1>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+    <div class="row py-5">
+      <div class="col">
+        <h2 class="text-center">Welcome {{ user.first_name }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-3 ml-auto">
+        <a
+          href="{% url 'create' %}"
+          class="btn btn-outline btn-block mb-2 rounded-25"
+          style="
+            background: #86c232;
+            color: #222629;
+            border-color: #86c232;
+            font-size: 20px;
+          "
+          style="margin-left: auto;"
+          >Create list</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {% if listings %}
+
+        <table
+          class="table"
+          style="
+            table-layout: fixed;
+            background: #222629;
+            color: #86c232;
+            border-color: #222629 !important;
+          "
+        >
+          <thead>
+            <tr style="background: #222629; color: #86c232;">
+              <th scope="col">Title</th>
+              <th scope="col">Message</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for listing in listings %}
+            <tr>
+              <td>
+                <a
+                  class="mb-1"
+                  style="
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #86c232;
+                  "
+                  href="{% url 'listing' listing.pk %}"
+                  >{{ listing.title }}</a
+                >
+              </td>
+              <td class="text-truncate">
+                <a
+                  class="mb-1"
+                  style="
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #86c232;
+                  "
+                  href="{% url 'listing' listing.pk %}"
+                  >{{ listing.message }}</a
+                >
+              </td>
+              <td>
+                <a
+                  href="{% url 'update' listing.id %}"
+                  class="mr-4 mb-1"
+                  style="color: #5bc0de;"
+                  ><i class="fas fa-edit"></i
+                ></a>
+
+                <form
+                  action="{% url 'delete' listing.id %}"
+                  method="POST"
+                  class="d-inline mr-1 mb-1"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    style="
+                      background: transparent;
+                      border-color: #222629;
+                      color: #d9534f;
+                      border-style: solid;
+                    "
+                    class="mr-1"
+                  >
+                    <i
+                      class="fas fa-trash-alt pt-1"
+                      style="font-size: 1.11em;"
+                    ></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <h6 class="my-5 py-2 text-center">
+          You have not created any listings yet!
+        </h6>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

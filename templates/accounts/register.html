@@ -1,0 +1,126 @@
+{% extends 'base.html' %} {% block title %} | Register Account {% endblock %}
+<!-- Space -->
+{% load static%}
+<!-- space -->
+{% block content %}
+<section id="register" style="background: #474b4f;" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card" style="background: #222629; border-color: #474b4f;">
+          <div
+            class="card-header"
+            style="background: #222629; color: #86c232; border-color: #86c232;"
+          >
+            <h4 style="font-size: 20px;">
+              <i class="fas fa-user-plus mr-1"></i> Register
+            </h4>
+          </div>
+          <div class="card-body" style="background: #222629; color: #86c232;">
+            <!-- Alerts -->
+            {% include 'partials/_alerts.html' %}
+            <form action="{% url 'register' %}" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input
+                  type="text"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="first_name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input
+                  type="text"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="last_name"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="username"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Id</label>
+                <input
+                  type="email"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="email"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password2">Password</label>
+                <input
+                  type="password"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="password"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Confirm Password</label>
+                <input
+                  type="password"
+                  style="
+                    background: #222629;
+                    color: #86c232;
+                    border-color: #86c232;
+                  "
+                  name="password2"
+                  class="form-control mb-5"
+                  required
+                />
+              </div>
+              <input
+                type="submit"
+                style="
+                  background: #86c232;
+                  color: #222629;
+                  border-color: #86c232;
+                  font-size: 20px;
+                "
+                value="Register"
+                class="btn btn-block rounded-25 mt-3"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

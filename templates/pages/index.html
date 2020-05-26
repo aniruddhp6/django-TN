@@ -1,0 +1,25 @@
+{% extends 'base.html'%} {% load static%} {% block content%}
+<section id="home" style="background: #474b4f; color: #86c232;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 mx-auto">
+        <div
+          class="jumbotron text-center mt-5 mb-5"
+          style="background: #222629;"
+        >
+          {% include 'partials/_alerts.html'%}
+          <h1 class="display-4 mb-3">Welcome and create your Notes</h1>
+
+          <a
+            class="btn btn-lg mt-2"
+            style="color: #222629; background: #86c232;"
+            href="{% url 'register'%}"
+            role="button"
+            >Register Here</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

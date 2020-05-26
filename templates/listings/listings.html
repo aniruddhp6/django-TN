@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!-- Space -->
+{% block title %} | Browse Listings {% endblock %}
+<!-- Space -->
+{% load humanize %} {% block content %}
+
+<section id="showcase-inner" class="py-5">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">Browse your Listings</h1>
+        <p class="lead"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Listings -->
+<section id="list">
+  <div class="container">
+    <div class="row mb-3">
+      {% if listings %} {% for listing in listings %}
+      <div class="col-md-4 mb-3">
+        <div class="card mx-auto">
+          <div class="card-header text-center bg-dark text-white">
+            {{ listing.title }}
+          </div>
+          <div class="card-body">
+            <p>
+              {{ listing.message }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>No Available Listings</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock%}
